@@ -1,0 +1,3 @@
+Bjorn is a Senior Front-end developer at Codestar that loves working with Angular, TypeScript and RxJS. 
+Having worked with this combination for the last couple of years, he has experienced setting up, expanding, designing and managing architectures and projects surrounding these technologies. 
+esides these experiences, he has a passion for videogames and sometimes spends of his spare time building these using similar technologies.
