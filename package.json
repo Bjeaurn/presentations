@@ -1,0 +1,22 @@
+{
+  "name": "presentations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "reveal-md src/ --theme src/bjeaurn.css --highlight-theme atom-one-dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bjeaurn/presentations.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bjeaurn/presentations/issues"
+  },
+  "homepage": "https://github.com/Bjeaurn/presentations#readme",
+  "dependencies": {
+    "reveal-md": "^2.4.1"
+  }
+}
