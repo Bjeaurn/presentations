@@ -10,4 +10,4 @@ In this talk, I will show you how to make the TypeScript compiler work for you, 
 
 When you use TypeScript more effectively, you increase type safety and lower the chances of making mistakes in your code. Using the powerful built-in type system keeps your code readable, explicit, and easier to maintain. Doesn't that sound like a dream?
 
-Best of all, with the examples in this talk you'll learn that TypeScript's strict compiler was actually your friend all along!
+Best of all, with the examples in this talk, you'll learn that TypeScript's strict compiler was your friend all along!
