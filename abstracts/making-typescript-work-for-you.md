@@ -1,7 +1,13 @@
 # Making TypeScript work for you
-### Keep code readable, increase maintainability and decrease the chance for mistakes by making the TypeScript compiler work for you.
 
->XXX words
+### Abstract
+> 188 characters
+> 
+Keep code readable, increase maintainability and decrease the chance for mistakes by making the TypeScript compiler work for you, utilizing its powerful type system and language features.
+
+
+### Description
+>105 words
 >
 >Talk length: ~30 minutes
 
