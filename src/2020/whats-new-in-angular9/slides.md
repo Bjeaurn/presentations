@@ -1,0 +1,84 @@
+---
+
+# What's new in Angular v9?
+
+// TODO - Picture of yourself and Codestar on this one? Github link etc.? Twitch reference?
+Note: Introduce yourself
+
+---
+
+## Angular moves fast
+// TODO - Angular release cycle?
+
+---
+
+# So what is new in Angular 9?
+
+---
+
+# Ivy Renderer
+
+Of course, the introduction and promoting to default of the Ivy Renderer is one of the main features in Angular 9. 
+
+This is however, not an Ivy talk. We'll glance over it and what it brings, but for more in-depth detail I'll refer you to some other excellent talks.
+
+Fun little detail: the name Ivy came from "IV", the fourth renderer in Angular.
+
+----
+
+<What is Ivy in 3 lines, show quick code example with differences, benefits>
+
+From Angular blog:
+Smaller bundle sizes
+Faster testing
+Better debugging
+Improved CSS class and style binding
+Improved type checking
+Improved build errors
+Improved build times, enabling AOT on by default
+Improved Internationalization
+
+----
+
+Now by default in new projects, quick setting in tsconfig for existing ones.
+
+---
+
+# Improved i18n
+
+Internationalization
+
+Introduction of `@angular/localize`
+
+
+https://angular.io/guide/i18n
+- @angular/localize is new
+
+`ng add @angular/localize`
+https://blog.ninja-squad.com/2019/12/10/angular-localize/
+
+Still have different bundles for every language. But compilation and building each bundle is now done in seconds or even parallel, taking international builds from 2 minutes to 40 seconds.
+
+
+```https://blog.ninja-squad.com/2019/12/10/angular-localize/
+Runtime translations
+As I was mentioning, if you use the CLI commands above (ng serve --configuration=fr or ng build --localize) then the application is compiled and then translated before hitting the browser, so there are no $localize calls at runtime.
+
+But $localize has been designed to offer another possibility: runtime translations. What does it mean? Well, we would be able to ship only one application, containing $localize calls, and before the application starts, we could load the translations we want. No more N builds and N bundles for N locales \o/
+
+Without diving too much into the details, this is already possible with v9, by using the loadTranslations function offered by @angular/localize. But this has to be done before the application starts.
+
+You can load your translations in polyfills.ts with:
+
+import '@angular/localize/init';
+import { loadTranslations } from '@angular/localize';
+
+loadTranslations({
+  '1815172606781074132': 'Bonjour {$name}\xa0! Vous avez {$userCount} utilisateurs.'
+});
+As you can see there is no locale consideration: you just load your translation as an object, whose keys are the strings to translate, and the values, their translations.
+
+Now if you run a simple ng serve, the title is displayed in French! And no more need for ng xi18n, or messages.fr.xlf or specific configuration for each locale in angular.json. In the long term, when this will be properly supported and documented, we should be able to load JSON files at runtime, like most i18n libraries do. You could even achieve it in v9, it’s just a bit of manual work, but it’s doable.
+```
+
+- Directionality Query API

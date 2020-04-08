@@ -29,6 +29,7 @@ ngcc - Angular Compatibility Compiler, to allow backwards compatibility with old
 
 #### Improved i18n (Internationalization)
 https://angular.io/guide/i18n
+- @angular/localize new
 - Directionality Query API
 
 
