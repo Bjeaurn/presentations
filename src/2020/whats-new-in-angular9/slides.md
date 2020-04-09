@@ -60,6 +60,7 @@ https://blog.ninja-squad.com/2019/12/10/angular-localize/
 Still have different bundles for every language. But compilation and building each bundle is now done in seconds or even parallel, taking international builds from 2 minutes to 40 seconds.
 
 
+/// TODO !
 ```https://blog.ninja-squad.com/2019/12/10/angular-localize/
 Runtime translations
 As I was mentioning, if you use the CLI commands above (ng serve --configuration=fr or ng build --localize) then the application is compiled and then translated before hitting the browser, so there are no $localize calls at runtime.
@@ -82,3 +83,49 @@ Now if you run a simple ng serve, the title is displayed in French! And no more 
 ```
 
 - Directionality Query API
+
+---
+
+# Angular Core typesafety improvements
+
+```
+TestBed.get(SYMBOL)
+TestBed.inject<SYMBOL>(Symbol)
+```
+
+Unfortunately at the time there's no auto migration for this. So a bit of manual labor in your unit tests.
+
+---
+
+# Testing harnasses
+
+- Component harnesses
+- End-to-End tests now support grep and invertGrep
+
+---
+
+# AoT compiler by default
+The Ahead of Time compilation was an option already, which made some more dynamically generated things harder to do and caused issues in earlier versions. This is now all fixed. 
+
+The `ngcc`, (Angular Compatibility Compiler) enables that older versions of libraries are compatible with the current version Ivy Renderer and AoT.
+
+---
+
+# TypeScript & TSLint upgrades
+
+-TS 3.7 in v9, 3.8 in v9.1
+- Adds: Optional chaining, Type-only imports, ECMAScript private fields, top level await, "fast & loose" incremental checking.
+https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/
+
+- TSLint 6.1 by default (v9.1)
+- No automatic upgrade, cause of breaking changes.
+
+`ng update @angular/cli --migrate-only tslint-version-6`
+
+# DevEx: IDE & Language Service improvements
+- Mainly for VSCode
+- Improved HTML & Expression Syntax Highlighting
+
+--- 
+
+That's all folks!
