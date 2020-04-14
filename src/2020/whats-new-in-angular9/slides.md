@@ -1,14 +1,18 @@
----
 
 # What's new in Angular v9?
 
 // TODO - Picture of yourself and Codestar on this one? Github link etc.? Twitch reference?
+
 Note: Introduce yourself
 
 ---
 
 ## Angular moves fast
-// TODO - Angular release cycle?
+- A major release every 6 months
+- 1-3 minor releases for each major release
+- A patch release and pre-release (next or rc) build almost every week
+
+https://angular.io/guide/releases
 
 ---
 
@@ -26,7 +30,7 @@ Fun little detail: the name Ivy came from "IV", the fourth renderer in Angular.
 
 ----
 
-<What is Ivy in 3 lines, show quick code example with differences, benefits>
+// TODO What is Ivy in 3 lines, show quick code example with differences, benefits
 
 From Angular blog:
 Smaller bundle sizes
@@ -41,6 +45,13 @@ Improved Internationalization
 ----
 
 Now by default in new projects, quick setting in tsconfig for existing ones.
+```json
+  ...,
+  "angularCompilerOptions": {
+    "enableIvy": true
+  },
+  ...
+```
 
 ---
 
