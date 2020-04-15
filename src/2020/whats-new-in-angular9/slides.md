@@ -1,6 +1,6 @@
 ---
 title: What's new in Angular v9?
-theme: solarized
+notesSeparator: "^Note:"
 ---
 
 # What's new in Angular v9?
@@ -24,19 +24,26 @@ https://angular.io/guide/releases
 
 ---
 
-# Ivy Renderer
+# <span class="fragment highlight-red" data-fragment-index="1">IV</span>Y Renderer
 
-Of course, the introduction and promoting to default of the Ivy Renderer is one of the main features in Angular 9. 
+<p class="fragment fade-in" data-fragment-index="0">Now default!</p>
 
-This is however, not an Ivy talk. We'll glance over it and what it brings, but for more in-depth detail I'll refer you to some other excellent talks.
+<aside class="notes">
+1) This is however, not an Ivy talk. We'll glance over it and what it brings, but for more in-depth detail I'll refer you to some other excellent talks.
 
-Fun little detail: the name Ivy came from "IV", the fourth renderer in Angular.
+2) 4th renderer, where the name "IV" came from.
+</aside>
 
 ----
 
-// TODO What is Ivy in 3 lines, show quick code example with differences, benefits
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="0">Smaller bundles</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="1">Better debugging</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="2">Faster testing</p>
+<span class="fragment" data-fragment-index="3"></span>
 
-From Angular blog:
+// TODO Add code examples per piece?
+
+<!-- From Angular blog:
 Smaller bundle sizes
 Faster testing
 Better debugging
@@ -44,7 +51,7 @@ Improved CSS class and style binding
 Improved type checking
 Improved build errors
 Improved build times, enabling AOT on by default
-Improved Internationalization
+Improved Internationalization -->
 
 ----
 
