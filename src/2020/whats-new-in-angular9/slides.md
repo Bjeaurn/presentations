@@ -1,3 +1,7 @@
+---
+title: What's new in Angular v9?
+theme: solarized
+---
 
 # What's new in Angular v9?
 
@@ -133,10 +137,12 @@ https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/
 
 `ng update @angular/cli --migrate-only tslint-version-6`
 
+---
+
 # DevEx: IDE & Language Service improvements
 - Mainly for VSCode
 - Improved HTML & Expression Syntax Highlighting
 
---- 
+---
 
 That's all folks!
