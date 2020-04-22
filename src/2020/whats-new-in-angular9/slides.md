@@ -233,26 +233,103 @@ No auto migration yet!<!-- .element: class="fragment" -->
 
 ### Testing
 
-// TODO HIERZO! 
-
 ----
 
-- Component harnesses
-https://medium.com/@kevinkreuzer/test-your-components-using-angular-materials-component-harnesses-f9c1deebdf5d
+#### Unit testing
 
-----
-
-- End-to-End tests now support grep and invertGrep
 ```ts
-example!
+const radioButton = fixture.debugElement.query(By.css('#radio-button'))
+const clickableElement = radio.query(By.css('.mat-radio-container'))
+
+clickableElement.nativeElement.click();
+fixture.detectChanges();
+fixture.whenStable().then(() => {
+  const rows = fixture.debugElement.queryAll(By.css('.mat-table tbody tr'));
+  expect(rows.length).toBe(5);
+  done()
+})
 ```
+<!-- .element: class="fragment" -->
+
+Note: Addition to @angular/material, as a part of Angular CDK. Instead of this with the CSS selectors, the hardcoded #id and .classes, we go to:
+
+----
+
+#### Component Harnasses
+
+```ts
+const radioButton = await loader.getHarness<MatRadioButtonHarness>(MatRadioButtonHarness.with({
+  label: 'My radio'
+}))
+const table = await loader.getHarness<MatTableHarness>(MatTableHarness)
+
+await radioButton.check()
+const rows = await table.getRows()
+expect(rows.length).toBe(5)
+```
+
+So clean! 😍<!-- .element: class="fragment" -->
+
+
+Note: Based on the "PageObject" principe we see a lot, in both Unit and E2E testing in the frontend, @angular/material now adds their own testing helpers called Harnasses. They abstract away the internal implementation details, so we don't have to rely on their internal classes to target our components. You can do this for yourself too!
+
+----
+
+#### E2E testing
+
+Harnasses too with @angular/material and @angular/cdk!
+<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+End-to-End tests now support grep and invertGrep
+<!-- .element: class="fragment" -->
+
+```ts
+ng e2e --grep searchTerm
+```
+<!-- .element: class="fragment fade-in-then-out" -->
+
+```ts
+describe('App', () => {
+  it('should display welcome message', () => {}
+  it('should test things', () => {}
+})
+```
+<!-- .element: class="fragment" -->
+
+```sh
+  ng e2e --grep test  //  Executed 1 of 2 specs
+  ng e2e --grep App   // Executed 2 of 2 specs SUCCESS in 1 sec.
+```
+<!-- .element: class="fragment" -->
+
+Note: Makes targetting a specific e2e test even easier. Zone into a specific test or group of tests, or exclude in the same way.
 
 ---
 
-### AoT compiler by default
-The Ahead of Time compilation was an option already, which made some more dynamically generated things harder to do and caused issues in earlier versions. This is now all fixed. 
+### New compiler defaults
 
-The `ngcc`, (Angular Compatibility Compiler) enables that older versions of libraries are compatible with the current version Ivy Renderer and AoT.
+<p class="fragment">Ahead-of-Time</p>
+<p class="fragment">Improved type checking of templates</p>
+<p class="fragment">ngcc takes care of backwards compatibility</p>
+
+```json
+{
+  fullTemplateTypeCheck: true, 
+  strictTemplates: true
+}
+```
+<!-- .element: class="fragment" -->
+
+Note: AoT is now default in new Angular 9 projects, you can change this in your angular.json. This builds and compiles all your styles and HTML into JavaScript files too for faster rendering on the client. 
+
+This also enables improved type checking of templates, for which we have 2 settings now available in your tsconfig.json.
+
+And the Angular Compatibility Compiler takes care of backwards compatibility for external libraries.
+
+----
+
+![No Ivy](./assets/compiling/intellisense.png)
+![With Ivy](./assets/compiling/intellisense-2.png)
 
 ---
 
@@ -277,7 +354,7 @@ https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/<!-- .elemen
 ### TSLint upgrade
 
 - TSLint 6.1 by default (v9.1)<!-- .element: class="fragment" -->
-- No automatic upgrade, cause of breaking changes.<!-- .element: class="fragment" -->
+- No automatic upgrade, cause of breaking changes!<!-- .element: class="fragment" -->
 
 `ng update @angular/cli --migrate-only tslint-version-6`
 <!-- .element: class="fragment" -->
@@ -285,21 +362,23 @@ https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/<!-- .elemen
 ---
 
 ### DevEx: IDE & Language Service improvements
-- Mainly for VSCode
-- Improved HTML & Expression Syntax Highlighting
+- Mainly for VSCode<!-- .element: class="fragment fade-in-then-semi-out" -->
+- Improved HTML & Expression Syntax Highlighting<!-- .element: class="fragment" -->
 
 ---
 
-## That's all folks!<!-- .element: class="fragment fade-in-then-semi-out"-->
-
 # Questions?<!-- .element: class="fragment" -->
+
+---
+
+## Thank you!<!-- .element: class="fragment fade-in"-->
 
 <div style="float: left; width: 40%">
   <img src="assets/bjorn.jpg" width="100" style="border-radius:100%; display: inline-flex;"><br />
   <img src="assets/codestar.svg" height="30" style="border: 0; background-color: transparent;">
 </div>
-<div style="float: left; width: 40%; text-align: left;">
+<div style="float: left; width: 60%; text-align: left;">
 <br />
-  <h1 style="font-size: 0.9em;">Bjorn Schijff</h1>
-   <small>@Bjeaurn / bjorn.schijff@ordina.nl</small>
+  <h1 style="font-size: 0.9em;">@Bjeaurn</h1>
+  <p>Please tweet me your thoughts!</p>
 </div>
