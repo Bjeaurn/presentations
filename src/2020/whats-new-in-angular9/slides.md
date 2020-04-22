@@ -21,11 +21,11 @@ Note: Introduce yourself
 ---
 
 ## Angular moves fast
-- A major release every 6 months
-- 1-3 minor releases for each major release
-- A patch release and pre-release (next or rc) build almost every week
+- A major release every 6 months<!-- .element: class="fragment" -->
+- 1-3 minor releases for each major release<!-- .element: class="fragment" -->
+- A patch release and pre-release (next or rc) build almost every week<!-- .element: class="fragment" -->
 
-https://angular.io/guide/releases
+https://angular.io/guide/releases<!-- .element: class="fragment" -->
 
 ---
 
@@ -40,15 +40,17 @@ https://angular.io/guide/releases
 <aside class="notes">
 1) This is however, not an Ivy talk. We'll glance over it and what it brings, but for more in-depth detail I'll refer you to some other excellent talks.
 
-2) 4th renderer, where the name "IV" came from.
+2) So, most important thing for V9: Ivy is DEFAULT!
+
+3) 4th renderer, where the name "IV" came from.
 </aside>
 
 ----
 
 <p class="fragment fade-in-then-semi-out visible" data-fragment-index="0">Smaller bundles</p>
 <p class="fragment fade-in-then-semi-out visible" data-fragment-index="1">Better re-compilation performance</p>
-<p class="fragment fade-in-then-semi-out visible" data-fragment-index="1">Better debugging</p>
-<p class="fragment fade-in-then-semi-out visible" data-fragment-index="2">Faster testing</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="2">Better debugging</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="3">Faster testing</p>
 <span class="fragment" data-fragment-index="3"></span>
 
 ----
@@ -120,40 +122,95 @@ Now by default in new projects, quick setting in tsconfig for existing ones.
 
 # Improved i18n
 
- @angular/localize is new
+@angular/localize<!-- .element: class="fragment" -->
 
-`ng add @angular/localize`
+`ng add @angular/localize`<!-- .element: class="fragment" -->
 
-https://angular.io/guide/i18n
-
-Note: Still have different bundles for every language. But compilation and building each bundle is now done in seconds or even parallel, taking international builds from 2 minutes to 40 seconds.
+https://angular.io/guide/i18n<!-- .element: class="fragment" -->
 
 ----
 
-<aside class="notes">
-https://blog.ninja-squad.com/2019/12/10/angular-localize/
-Runtime translations
-As I was mentioning, if you use the CLI commands above (ng serve --configuration=fr or ng build --localize) then the application is compiled and then translated before hitting the browser, so there are no $localize calls at runtime.
+```html
+<h1 i18n="meaning|Description for translators@@customId">Hello all!</h1>
+```
 
-But $localize has been designed to offer another possibility: runtime translations. What does it mean? Well, we would be able to ship only one application, containing $localize calls, and before the application starts, we could load the translations we want. No more N builds and N bundles for N locales \o/
+```sh
+ng xi18n
+```
+<!-- .element: class="fragment" -->
 
-Without diving too much into the details, this is already possible with v9, by using the loadTranslations function offered by @angular/localize. But this has to be done before the application starts.
+----
 
-You can load your translations in polyfills.ts with:
+```xml
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="customId" datatype="html">
+        <source>Hello all!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Description for translators</note>
+        <note priority="1" from="meaning">meaning</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+```
+
+```xml
+<target>Hallo allemaal!</target>
+```
+<!-- .element: class="fragment" -->
+
+```sh
+ng xi18n  --format=xlf
+ng xi18n  --format=xlf2
+ng xi18n  --format=xmb
+```
+<!-- .element: class="fragment" -->
+
+Note: 3 formats, XLF, XLF2 and XMB. All "known" translation formats.
+
+----
+
+```html
+<span i18n>Updated {minutes, plural, 
+  =0 {just now} 
+  =1 {one minute ago} 
+  other {{{minutes}} minutes ago}}
+</span>
+```
+
+```xml
+<trans-unit id="5420212fa00d960d1c8858ce09b10e0dc5b87d90" datatype="html">
+      <source>Updated <x id="ICU" equiv-text="{minutes, plural, =0 {...} =1 {...} other {...}}"/>
+      </source>
+```
+<!-- .element: class="fragment" -->
+
+
+```xml
+<trans-unit id="5a134dee893586d02bffc9611056b9cadf9abfad" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {just now} =1 {one minute ago} other {<x id="INTERPOLATION" equiv-text="{{minutes}}"/> minutes ago} }</source>
+</trans-unit>
+```
+<!-- .element: class="fragment" -->
+
+----
+
+### i18n is getting powerful!
+
+`ng build --prod --localize`
+
+- Faster building of all bundles<!-- .element: class="fragment" -->
+- Still a bundle per locale<!-- .element: class="fragment" -->
+
+<aside class="notes">Still have different bundles for every language. But compilation and building each bundle is now done in seconds or even parallel, taking international builds from 2 minutes to 40 seconds.
+
+Of course many plugins available that do live translations etc. like `ngx-translate`.
 </aside>
-
-```
-  import '@angular/localize/init';
-  import { loadTranslations } from '@angular/localize';
-
-  loadTranslations({
-    '1815172606781074132': 'Bonjour {$name}\xa0! Vous avez {$userCount} utilisateurs.'
-  });
-```
-
-As you can see there is no locale consideration: you just load your translation as an object, whose keys are the strings to translate, and the values, their translations.
-Now if you run a simple ng serve, the title is displayed in French! And no more need for ng xi18n, or messages.fr.xlf or specific configuration for each locale in angular.json. In the long term, when this will be properly supported and documented, we should be able to load JSON files at runtime, like most i18n libraries do. You could even achieve it in v9, it’s just a bit of manual work, but it’s doable.
-```
 
 ---
 
@@ -163,20 +220,32 @@ Now if you run a simple ng serve, the title is displayed in French! And no more 
 const service = TestBed.get(ExampleService)
 service. ??? // any!
 ```
+<!-- .element: class="fragment" -->
 
 ```ts
 const service = TestBed.inject<ExampleService>(ExampleService)
 ```
+<!-- .element: class="fragment" -->
 
-Unfortunately at the time there's no auto migration for this. So a bit of manual labor in your unit tests.
+No auto migration yet!<!-- .element: class="fragment" -->
 
 ---
 
-### Testing harnasses
+### Testing
+
+// TODO HIERZO! 
+
+----
 
 - Component harnesses
-- End-to-End tests now support grep and invertGrep
 https://medium.com/@kevinkreuzer/test-your-components-using-angular-materials-component-harnesses-f9c1deebdf5d
+
+----
+
+- End-to-End tests now support grep and invertGrep
+```ts
+example!
+```
 
 ---
 
@@ -187,16 +256,31 @@ The `ngcc`, (Angular Compatibility Compiler) enables that older versions of libr
 
 ---
 
-### TypeScript & TSLint upgrades
+### TypeScript  upgrades
 
--TS 3.7 in v9, 3.8 in v9.1
-- Adds: Optional chaining, Type-only imports, ECMAScript private fields, top level await, "fast & loose" incremental checking.
-https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/
 
-- TSLint 6.1 by default (v9.1)
-- No automatic upgrade, cause of breaking changes.
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="0">v9: TypeScript 3.7</p>
+<p class="fragment fade-in visible" data-fragment-index="1">v9.1: TypeScript 3.8</p>
+
+----
+
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="2">Optional chaining</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="3">Type-only imports</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="4">ECMAScript private fields</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="5">Top level await</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="6">"fast & loose" incremental checking</p>
+
+https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/<!-- .element: class="fragment" -->
+
+---
+
+### TSLint upgrade
+
+- TSLint 6.1 by default (v9.1)<!-- .element: class="fragment" -->
+- No automatic upgrade, cause of breaking changes.<!-- .element: class="fragment" -->
 
 `ng update @angular/cli --migrate-only tslint-version-6`
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -206,7 +290,9 @@ https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/
 
 ---
 
-## That's all folks!
+## That's all folks!<!-- .element: class="fragment fade-in-then-semi-out"-->
+
+# Questions?<!-- .element: class="fragment" -->
 
 <div style="float: left; width: 40%">
   <img src="assets/bjorn.jpg" width="100" style="border-radius:100%; display: inline-flex;"><br />
