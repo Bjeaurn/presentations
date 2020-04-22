@@ -5,6 +5,7 @@ notesSeparator: "^Note:"
 
 ## What's new in Angular v9?
 
+<div class="fragment fade-up">
 <div style="float: left; width: 40%">
   <img src="assets/bjorn.jpg" width="100" style="border-radius:100%; display: inline-flex;"><br />
   <img src="assets/codestar.svg" height="30" style="border: 0; background-color: transparent;">
@@ -15,8 +16,9 @@ notesSeparator: "^Note:"
   <small style="display: inline-flex;">Frontend Software Engineer @ Politie</small><br />
    <small>@Bjeaurn / bjorn.schijff@ordina.nl</small>
 </div>
+</div>
 
-Note: Introduce yourself
+Note: Introduce yourself, may know me from Twitch recently (Shameless self plug)
 
 ---
 
@@ -116,7 +118,7 @@ Now by default in new projects, quick setting in tsconfig for existing ones.
     "enableIvy": true
   },
   ...
-```$$
+``` 
 
 ---
 
@@ -127,6 +129,9 @@ Now by default in new projects, quick setting in tsconfig for existing ones.
 `ng add @angular/localize`<!-- .element: class="fragment" -->
 
 https://angular.io/guide/i18n<!-- .element: class="fragment" -->
+
+
+Note: Make joke about how I'm not really familiar with i18n in my current projects, so...? Ok, I researched it a bit for you!
 
 ----
 
@@ -197,6 +202,22 @@ Note: 3 formats, XLF, XLF2 and XMB. All "known" translation formats.
 </trans-unit>
 ```
 <!-- .element: class="fragment" -->
+
+----
+
+```html
+<span i18n>Updated {minutes, plural, 
+  =0 {just now} 
+  =1 {one minute ago} 
+  other {{{minutes}} minutes ago}}
+</span>
+```
+
+<img src="assets/cool-ICU-example.gif" /><!-- .element: class="fragment" -->
+
+
+Note: In case you were wondering what this ICU/plural thing does?
+
 
 ----
 
