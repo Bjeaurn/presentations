@@ -3,11 +3,18 @@ title: What's new in Angular v9?
 notesSeparator: "^Note:"
 ---
 
+Questions during the presentation?
+
+<img src="assets/slido-qr.png" style="height: 500px;" />
+
+---
+
 ## What's new in Angular v9?
 
 <div class="fragment fade-up">
 <div style="float: left; width: 40%">
   <img src="assets/bjorn.jpg" width="100" style="border-radius:100%; display: inline-flex;"><br />
+  <img src="assets/ordina-logo.svg" height="40" style="border: 0; background-color: transparent;"/>
   <img src="assets/codestar.svg" height="30" style="border: 0; background-color: transparent;">
 </div>
 <div style="float: left; width: 40%; text-align: left;">
