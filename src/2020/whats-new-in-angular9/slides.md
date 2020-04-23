@@ -5,7 +5,7 @@ notesSeparator: "^Note:"
 
 Questions during the presentation?
 
-<img src="assets/slido-qr.png" style="height: 500px;" />
+<img src="assets/slido-qr.png" style="height: 500px; border: none;" />
 
 ---
 
@@ -396,6 +396,10 @@ https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/<!-- .elemen
 ---
 
 # Questions?<!-- .element: class="fragment" -->
+
+<img src="assets/slido-qr.png" style="height: 300px; border: none;" /><!-- .element: class="fragment fade-up" -->
+
+Note: Wait for a minute, check questions and maybe move that over? Or keep the slides.
 
 ---
 
