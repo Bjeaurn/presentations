@@ -91,6 +91,10 @@ Note: We don't want to lose control of the process. We don't want any new (autom
 
 ---
 
+Here goes the rest of the talk, with actual examples from Github, CircleCI, Travis, Github Actions, (Jenkins?), Slack etc.
+
+---
+
 # Code highlight example for future reference
 
 <pre><code data-line-numbers="|3,8-10|9|10-12">
