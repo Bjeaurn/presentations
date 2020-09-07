@@ -65,11 +65,11 @@ Note: Introduce yourself.
 
 Keeps us focussed on our job<!-- .element: class="fragment fade-in-then-semi-out" -->
 
-Makes a bot actively remind us<!-- .element: class="fragment fade-in-then-semi-out" -->
+Active reminders<!-- .element: class="fragment fade-in-then-semi-out" -->
 
 Cause we can!<!-- .element: class="fragment" -->
 
-Note: Why would you want to automate this in the first place? So we don't have to think about it, have to spend less time doing it and in the end cause the Angular CLI enables us to automate it!
+Note: Why would you want to automate this in the first place? So we don't have to think about it, when we receive active reminder. We have to spend less time doing it and in the end cause the Angular CLI enables us to automate it!
 
 ----
 
@@ -85,13 +85,33 @@ Note: We don't want to lose control of the process. We don't want any new (autom
 
 ## A note about other platforms 
 
+What about React? VueJS?
+
 <!-- TODO Talk about React, VueJS etc. and how they're probably able to achieve similar things, even in a basic form like Githubs Dependabot. 
 // Remind people this talk is about Angular cause of it's excellent CLI and how it fit into our process. But that doesn't mean it can't be done for other situations!
+// `npm update` or whatever can also be a fine start to automate this process.
 // The other platforms is also a nice segway into different CI solutions and the requirement we lean on. This is good part into the actual code/solutions.-->
 
 ---
 
-Here goes the rest of the talk, with actual examples from Github, CircleCI, Travis, Github Actions, (Jenkins?), Slack etc.
+## So, how do you start?<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+All you need is a repository<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+----
+
+`ng new test-app`
+
+or an existing app
+
+Note: This could be either a clean repository just for testing, or an existing; as you really don't have to touch the architecture of the app to try.
+
+---
+
+<img src="assets/ci/github-actions.svg" style="border: none; background: transparent; height: 14rem; color: white;" />
+<img src="assets/ci/Circle-CI-Logo.png" style="border: none; background: transparent; height: 14rem; filter: brightness(400%);" />
+<img src="assets/ci/1200px-Jenkins_logo.svg.png" style="border: none; background: transparent; height: 14rem;" />
+<img src="assets/ci/gitlab-ci-cd-logo_2x.png" style="border: none; background: transparent; height: 14rem;" />
 
 ---
 
@@ -126,6 +146,7 @@ Note: Wait for a minute, check questions and maybe move that over? Or keep the s
 
 <div style="float: left; width: 40%">
   <img src="assets/bjorn.jpg" width="100" style="border-radius:100%; display: inline-flex;"><br />
+  <img src="assets/ordina-logo.svg" height="40" style="border: 0; background-color: transparent;"/>
   <img src="assets/codestar.svg" height="30" style="border: 0; background-color: transparent;">
 </div>
 <div style="float: left; width: 60%; text-align: left;">
