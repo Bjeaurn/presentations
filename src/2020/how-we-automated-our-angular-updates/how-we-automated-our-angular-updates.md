@@ -13,17 +13,15 @@ Questions during the presentation?
 
 ----
 
-## Frontend world moves fast
+## (Frontend) World moves fast
 
 Note: New versions weekly, additional tooling and libraries for your favorite project to keep up with, and your daily new framework. Although, it's been setting now for a bit. It can be distracting!
 
 ----
 
-<p class="fragment fade-in-then-semi-out visible" data-fragment-index="0">Take away focus</p>
-<p class="fragment fade-in-then-semi-out visible" data-fragment-index="1">Time consuming</p>
-<p class="fragment fade-in-then-semi-out visible" data-fragment-index="2">Distracting</p>
+## Where it all began
 
-Note: This can take away focus from the things you want to work on, take precious time out of your day and distract from the things that matter.
+Note: So, about a year and half ago, I was working in a team and we noticed that almost every sprint we lost some time to just updating our apps. 
 
 ----
 
@@ -35,11 +33,22 @@ Note: This can take away focus from the things you want to work on, take preciou
 
 😁 Keeps us happy!<!-- .element: class="fragment" -->
 
-Note: The Angular CLI as our personal hero made this process a lot easier, less time consuming and made it a joy to keep up to date.
+Note: We use the Angular CLI for most of our upgrades pre-work anyway, automatic migrations and packages get ready. Then we gotta test if everything still works as expected, are there any compilation errors etcetera.
 
 ----
 
-So much so, we automated it.
+
+# 💡
+
+ Note: So we had an idea. Why not let a bot do that and we review the results?
+
+----
+
+## Blogged about it
+
+https://medium.com/codestar-blog/how-we-automated-our-angular-updates-9790212aa211
+
+Note: So I blogged about our experiences, and what it brought us. And now we are here!
 
 ---
 
@@ -61,15 +70,13 @@ Note: Introduce yourself.
 
 ---
 
-## Why automate it?
+## Why did we want to automate?
 
-Keeps us focussed on our job<!-- .element: class="fragment fade-in-then-semi-out" -->
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="0">Take away focus</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="1">Time consuming</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="2">Distracting</p>
 
-Active reminders<!-- .element: class="fragment fade-in-then-semi-out" -->
-
-Cause we can!<!-- .element: class="fragment" -->
-
-Note: Why would you want to automate this in the first place? So we don't have to think about it, when we receive active reminder. We have to spend less time doing it and in the end cause the Angular CLI enables us to automate it!
+Note: This can take away focus from the things you want to work on, take precious time out of your day and distract from the things that matter.
 
 ----
 
@@ -104,6 +111,8 @@ All you need is a repository<!-- .element: class="fragment fade-in-then-semi-out
 
 or an existing app
 
+<img src="assets/angular-overview-clean.png" style="float: right; height: 50%;"/>
+
 Note: This could be either a clean repository just for testing, or an existing; as you really don't have to touch the architecture of the app to try.
 
 ---
@@ -112,6 +121,47 @@ Note: This could be either a clean repository just for testing, or an existing; 
 <img src="assets/ci/Circle-CI-Logo.png" style="border: none; background: transparent; height: 14rem; filter: brightness(400%);" />
 <img src="assets/ci/1200px-Jenkins_logo.svg.png" style="border: none; background: transparent; height: 14rem;" />
 <img src="assets/ci/gitlab-ci-cd-logo_2x.png" style="border: none; background: transparent; height: 14rem;" />
+
+Note: And you need a CI solution of your choice. 
+
+----
+
+Scheduled jobs<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+Separate pipeline<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+A way to create Pull Requests and run existing pipelines<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+Optional: A way to signal developers<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+Note: We can use anything as long as we have the above.
+
+----
+
+<img src="assets/ci/github-actions.svg" style="border: none; background: transparent; height: 14rem; color: white;" />
+<img src="assets/ci/Circle-CI-Logo.png" style="border: none; background: transparent; height: 14rem; filter: brightness(400%);" /><br />
+<img src="assets/ci/1200px-Jenkins_logo.svg.png" style="border: none; background: transparent; height: 14rem; opacity: 0.2;" />
+<img src="assets/ci/gitlab-ci-cd-logo_2x.png" style="border: none; background: transparent; height: 14rem; opacity: 0.2;" />
+
+Note: Which all of these have. We'll focus on Github Actions and CircleCI for the sake of speed.
+
+---
+
+<img src="assets/angular-overview.png" style="height: 90%;" />
+
+---
+
+<img src="assets/ci/gha/get-started.png" />
+
+Note: I like Github Actions, same code repo; no external integrations. This is why primary example, same goes for GitLab. We start by creating a new action.
+
+----
+
+<img src="assets/ci/gha/continuous-only.png" />
+
+Note: Or if you already have CI sorted, you add a new pipeline/workflow.
+
+---
 
 ---
 
@@ -131,6 +181,19 @@ Note: This could be either a clean repository just for testing, or an existing; 
   </tr>
 </table>
 </code></pre>
+
+---
+
+<!-- TODO - This slide is the summary and inspiration part. Benefits, gains, reasons why you should too. --->
+## What did we gain?
+
+Keeps us focussed on our job<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+Active reminders<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+Cause we can!<!-- .element: class="fragment" -->
+
+Note: Now, we don't have to think about it, when we receive active reminders. We have to spend less time doing it and in the end cause the Angular CLI enables us to automate it! And we just review the work after the bot reports it.
 
 ---
 
