@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "reveal-md src/ --css theme/bjeaurn.css --highlight-theme atom-one-dark",
+    "start": "reveal-md src/ --css theme/bjeaurn.css --highlight-theme github",
     "watch": "npm run start -- -w"
   },
   "repository": {
