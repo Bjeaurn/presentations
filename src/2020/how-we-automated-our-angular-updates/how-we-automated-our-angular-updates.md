@@ -1,11 +1,13 @@
 ---
 title: How we automated our Angular updates
 notesSeparator: "^Note:"
+revealOptions:
+  controls: false
 ---
 
 Questions during the presentation?
 
-<img src="assets/slido-qr.png" style="height: 500px; border: none;" />
+Check your flyer for instructions!
 
 ---
 
@@ -21,7 +23,7 @@ Note: New versions weekly, additional tooling and libraries for your favorite pr
 
 ## Where it all began
 
-Note: So, about a year and half ago, I was working in a team and we noticed that almost every sprint we lost some time to just updating our apps. 
+Note: So, about a year and half ago, I was working in a team and we noticed that almost every sprint we lost some time to just updating our apps.  Emphasize time lost and effort spent in keeping it all up to date, even though.
 
 ----
 
@@ -50,7 +52,7 @@ Note: We are running Angular in our frontend apps, which was being updated quite
 
 😁 Keeps us happy!<!-- .element: class="fragment" -->
 
-Note: We use the Angular CLI for most of our upgrades pre-work anyway, automatic migrations and packages get ready. Then we gotta test if everything still works as expected, are there any compilation errors etcetera.
+Note: We use the Angular CLI for most of our upgrades pre-work anyway, automatic migrations and packages get ready. Then we gotta test if everything still works as expected, are there any compilation errors etcetera. But it still cost time and effort to keep track and do it every sprint.
 
 ----
 
@@ -135,12 +137,14 @@ Note: This could be either a clean repository just for testing, or an existing; 
 
 ---
 
-<img src="assets/ci/github-actions.svg" style="border: none; background: transparent; height: 14rem; color: white;" />
-<img src="assets/ci/Circle-CI-Logo.png" style="border: none; background: transparent; height: 14rem; filter: brightness(400%);" />
-<img src="assets/ci/1200px-Jenkins_logo.svg.png" style="border: none; background: transparent; height: 14rem;" />
-<img src="assets/ci/gitlab-ci-cd-logo_2x.png" style="border: none; background: transparent; height: 14rem;" />
+<div style="display: flex;">
+  <img src="assets/ci/github-actions.svg" style="border: none; background: transparent; height: 14rem; color: white;" />
+  <img src="assets/ci/Circle-CI-Logo.png" style="border: none; background: transparent; height: 14rem; filter: brightness(400%);" />
+  <img src="assets/ci/1200px-Jenkins_logo.svg.png" style="border: none; background: transparent; height: 14rem;" />
+  <img src="assets/ci/gitlab-ci-cd-logo_2x.png" style="border: none; background: transparent; height: 14rem;" />
+</div>
 
-Note: And you need a CI solution of your choice. We'll focus on Github Actions today, but some examples refer to original Jenkins. Any CI will do honestly, with some requirements.
+Note: And you need a CI solution of your choice. We'll focus on Github Actions today, but some examples refer to original Jenkins. Any CI will do honestly, with some requirements. Choose GHA because it's easy to implement, has everything in one platform and honestly is just awesome as an example.
 
 ----
 
@@ -152,7 +156,7 @@ A way to create Pull Requests and run existing pipelines<!-- .element: class="fr
 
 Optional: A way to signal developers<!-- .element: class="fragment fade-in-then-semi-out" -->
  
-Note: We can use anything as long as we have the above. We'll focus on GitHub Actions today mainly, as an example.
+Note: We can use anything as long as we have the above. We'll focus on GitHub Actions today mainly, as an example. Of course default emails might do just fine!
 
 ---
 
@@ -232,7 +236,7 @@ Note: Talk about the `--force` part and how it may be controversial. This will i
 
 ----
 
-<pre><code data-line-numbers="|6-13|2-4|10,11,12|">
+<pre><code data-line-numbers="|2-4|6-13|10,11,12|">
 - name: Set current date/week information
   id: date
   run: echo "::set-output name=week::$(date +%V)"
@@ -386,70 +390,67 @@ Note: So let me tell you a bit about Jenkins, and the original example that spaw
 
 ----
 
-<pre><code data-line-numbers="|3-5|7-8|10,12-13|16|18,20|23|28|33|44-45|56-59-61|">
-        // Read the blogpost to see how we got the ${allCommands}!
-        sh "node_modules/@angular/cli/bin/ng update ${allCommands} 2>&1 | tee update-result.txt"
-            }
-        }
-
-        def lastLine = sh script: 'tail -n 1 update-result.txt', returnStdout: true
-                 def repoIsDirty = sh script: "git status --porcelain | grep '^.[^ ]' > /dev/null", returnStatus: true
-         
-                 if (repoIsDirty != 0) {
-                     echo lastLine
-                     echo "" + lastLine.indexOf('Incompatible')
-                     if (lastLine.indexOf('Incompatible') >= 0) {
-                         String updateResult = readFile('update-result.txt').trim()
-                         String report = "Automatic Update failed. See output:\n```\n$updateResult\n```"
-                         rocketSend channel: rocketChatChannel, emoji: ':cry:', message: report, rawMessage: true
-                         error 'Incompatible changes detected, cannot complete update automatically'
-                     } else {
-                         echo 'Nothing has to be updated! \\o/'
-                         rocketSend channel: rocketChatChannel, emoji: ':yeah:', message: 'No outdated dependencies :yeah:', rawMessage: true
-                     }
-                 } else {
-                     updatesApplied = true
-                 }
-         
-             }
-         
-             if (updatesApplied) {
-                 conditionalStage('Updating Git') {
-         
-                     sshagent(credentials: [env.GITLAB_CREDENTIALS_ID]) {
-                         // Do git config stuff for name and email
-                         // See how much more complex it was for us to get a simple branch pushed?
-                         sh "git add -A && git commit -m 'Automatic update of dependencies by ng update $currentDate'"
-                         sh "git push -u origin $targetBranch"
-                     }
-         
-                     def commitId = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-                     echo "Building commitId $commitId on branch $targetBranch"
-                     sh "git clean -dfx"
-                     sh "git log --oneline -1 | sed 's/^.*: //'"
-                 }
-         
-                 conditionalStage('Create MR') {
-                     withCredentials([[$class          : 'UsernamePasswordMultiBinding', // blabla credentials) {
-                         def getProjectResponse = stepGeneral.gitlab_getProjectDetails(token)
-                         def projectId = stepGeneral.parseJsonText(getProjectResponse.content).id
-                         def postBody = """
-         							{
-         							"id": "$projectId",
-         							"source_branch": "$targetBranch",
-         							"target_branch": "master",
-         							"title": "chore(ngUpdate): Automatic upgrade by Jenkins"
-         							}
-         						"""
-                         def mrUrl = env.GITLAB_API_BASE_URL + "/projects/${projectId}/merge_requests"
-         
-                         // Perform tag
-                         def response = httpRequest contentType: 'APPLICATION_JSON', httpMode: 'POST', requestBody: postBody, customHeaders: [[name: 'PRIVATE-TOKEN', value: token]], url: mrUrl
-                         def webUrl = stepGeneral.parseJsonText(response.content).web_url
-                         rocketSend channel: rocketChatChannel, emoji: ':yeah:', message: "Auto Updater: New merge request ${webUrl}", rawMessage: true
-                     }
-                 }
+<pre><code data-line-numbers="|1-4|6-7|9,11-12|14-16|18-19|22|25|28-33|42-52|53,56-59|">// Read the blogpost to see how we got the ${allCommands}!
+sh "node_modules/@angular/cli/bin/ng update ${allCommands} 2>&1 | tee update-result.txt"
     }
+}
+
+def lastLine = sh script: 'tail -n 1 update-result.txt', returnStdout: true
+def repoIsDirty = sh script: "git status --porcelain | grep '^.[^ ]' > /dev/null", returnStatus: true
+
+if (repoIsDirty != 0) {
+    echo lastLine
+    echo "" + lastLine.indexOf('Incompatible')
+    if (lastLine.indexOf('Incompatible') >= 0) {
+        String updateResult = readFile('update-result.txt').trim()
+        String report = "Automatic Update failed. See output:\n```\n$updateResult\n```"
+        rocketSend channel: rocketChatChannel, emoji: ':cry:', message: report, rawMessage: true
+        error 'Incompatible changes detected, cannot complete update automatically'
+    } else {
+        echo 'Nothing has to be updated! \\o/'
+        rocketSend channel: rocketChatChannel, emoji: ':yeah:', message: 'No outdated dependencies :yeah:', rawMessage: true
+    }
+} else {
+    updatesApplied = true
+}
+
+if (updatesApplied) {
+  conditionalStage('Updating Git') {
+
+      sshagent(credentials: [env.GITLAB_CREDENTIALS_ID]) {
+          // Do git config stuff for name and email
+          // See how much more complex it was for us to get a simple branch pushed?
+          sh "git add -A && git commit -m 'Automatic update of dependencies by ng update $currentDate'"
+          sh "git push -u origin $targetBranch"
+      }
+
+      def commitId = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+      echo "Building commitId $commitId on branch $targetBranch"
+      sh "git clean -dfx"
+      sh "git log --oneline -1 | sed 's/^.*: //'"
+  }
+
+  conditionalStage('Create MR') {
+      withCredentials([[$class          : 'UsernamePasswordMultiBinding', // blabla credentials) {
+          def getProjectResponse = stepGeneral.gitlab_getProjectDetails(token)
+          def projectId = stepGeneral.parseJsonText(getProjectResponse.content).id
+          def postBody = """
+      {
+      "id": "$projectId",
+      "source_branch": "$targetBranch",
+      "target_branch": "master",
+      "title": "chore(ngUpdate): Automatic upgrade by Jenkins"
+      }
+    """
+          def mrUrl = env.GITLAB_API_BASE_URL + "/projects/${projectId}/merge_requests"
+
+          // Perform tag
+          def response = httpRequest contentType: 'APPLICATION_JSON', httpMode: 'POST', requestBody: postBody, customHeaders: [[name: 'PRIVATE-TOKEN', value: token]], url: mrUrl
+          def webUrl = stepGeneral.parseJsonText(response.content).web_url
+          rocketSend channel: rocketChatChannel, emoji: ':yeah:', message: "Auto Updater: New merge request ${webUrl}", rawMessage: true
+      }
+  }
+}
 </code></pre>
 
 😰<!-- .element: class="fragment" -->
@@ -484,6 +485,8 @@ Note: We can use the PR var to send a message with the PR number, or send a mess
 ---
 
 ## Adding a Slack notification
+
+Note: Maybe why Slack instead of RocketChat from the last example? Slack a little easier to use / more people use it / no self hosted RC server.
 
 ----
 
@@ -597,7 +600,5 @@ Note: Now, we don't have to think about it, when we receive active reminders. We
 ---
 
 # Questions?
-
-<img src="assets/slido-qr.png" style="height: 300px; border: none;" /><!-- .element: class="fragment fade-up" -->
 
 Note: Wait for a minute, check questions and maybe move that over? Or keep the slides.
