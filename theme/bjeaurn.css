@@ -16,6 +16,25 @@ body {
   background-position: right bottom;
 }
 
+.flex {
+  width: 50%;
+  margin: 0 25%;
+  align-items: center;
+  align-content: center;;
+  display: flex;
+}
+
+.flex-half {
+  flex: 0.2 1 auto;
+  align-self: center;
+}
+
+.flex-1 {
+  flex: 1 1 auto;
+  align-self: center;
+  text-align: left
+}
+
 .reveal {
   font-family: "Open Sans", sans-serif;
   font-size: 32px;
@@ -229,11 +248,16 @@ body {
 /*********************************************
  * IMAGES
  *********************************************/
-.reveal section img {
+.reveal section img.border {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
   border: 4px solid #eee;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
+.reveal section img {
+    border: 0; 
+    background-color: transparent;
+    margin: 15px 0px;
+}
 
 .reveal section img.plain {
   border: 0;

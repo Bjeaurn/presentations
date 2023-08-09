@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "reveal-md src/ --css theme/bjeaurn.css --highlight-theme github",
+    "start": "reveal-md src/ --css theme/bjeaurn.css",
     "watch": "npm run start -- -w",
     "build": "reveal-md --css theme/bjeaurn.css --highlight-theme github --static"
   },
@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/Bjeaurn/presentations#readme",
   "dependencies": {
-    "reveal-md": "^4.1.2"
+    "reveal-md": "^5.5.1"
   }
 }

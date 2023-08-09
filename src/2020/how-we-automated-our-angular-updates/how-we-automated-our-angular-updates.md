@@ -27,11 +27,15 @@ Note: So, about a year and half ago, I was working in a team and we noticed that
 
 ----
 
-<svg xmlns="http://www.w3.org/2000/svg" height="400" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 250 250" style="enable-background:new 0 0 250 250;" xml:space="preserve">
+<svg xmlns="http://www.w3.org/2000/svg" height="400" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 250 250" style="enable-background:new 0 0 250 250
+" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#DD0031;}
-	.st1{fill:#C3002F;}
-	.st2{fill:#FFFFFF;}
+	.st0{fill:#DD0031
+}
+	.st1{fill:#C3002F
+}
+	.st2{fill:#FFFFFF
+}
 </style>
 <g>
 	<polygon class="st0" points="125,30 125,30 125,30 31.9,63.2 46.1,186.3 125,230 125,230 125,230 203.9,186.3 218.1,63.2  "/>
@@ -72,15 +76,27 @@ Note: So I blogged about our experiences, and what it brought us. And now we are
 ---
 
 <div class="fragment fade-up">
-<div style="float: left; width: 50%">
-  <img src="assets/bjorn.jpg" width="100" style="border-radius:100%; display: inline-flex;"><br />
-  <img src="assets/ordina-logo.svg" height="40" style="border: 0; background-color: transparent;"/>
-  <img src="assets/codestar.svg" height="30" style="border: 0; background-color: transparent;">
+<div style="float: left
+ width: 50%">
+  <img src="assets/bjorn.jpg" width="100" style="border-radius:100%
+ display: inline-flex
+"><br />
+  <img src="assets/ordina-logo.svg" height="40" style="border: 0
+ background-color: transparent
+"/>
+  <img src="assets/codestar.svg" height="30" style="border: 0
+ background-color: transparent
+">
 </div>
-<div style="float: left; width: 50%; text-align: left;">
+<div style="float: left
+ width: 50%
+ text-align: left
+">
 <br />
-  <h1 style="font-size: 0.9em;">Bjorn Schijff</h1>
-  <small style="display: inline-flex;">Sr. Frontend Engineer @ Codestar</small><br />
+  <h1 style="font-size: 0.9em
+">Bjorn Schijff</h1>
+  <small style="display: inline-flex
+">Sr. Frontend Engineer @ Codestar</small><br />
    <small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #1DA1F2"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z"/></svg> @Bjeaurn</small>
 </div>
 </div>
@@ -91,7 +107,8 @@ Note: Introduce yourself.
 
 ## Why did we want to automate?
 
-<p class="fragment fade-in-then-semi-out visible" data-fragment-index="0">Take away focus &amp; distracting</p>
+<p class="fragment fade-in-then-semi-out visible" data-fragment-index="0">Take away focus &amp
+ distracting</p>
 <p class="fragment fade-in-then-semi-out visible" data-fragment-index="1">Time consuming</p>
 <p class="fragment fade-in-then-semi-out visible" data-fragment-index="2">Cause we can</p>
 
@@ -131,17 +148,35 @@ All you need is a repository<!-- .element: class="fragment fade-in-then-semi-out
 
 or an existing app
 
-<img src="assets/angular-overview-clean.png" style="float: right; height: 50%;"/>
+<img src="assets/angular-overview-clean.png" style="float: right
+ height: 50%
+"/>
 
-Note: This could be either a clean repository just for testing, or an existing; as you really don't have to touch the architecture of the app to try.
+Note: This could be either a clean repository just for testing, or an existing
+ as you really don't have to touch the architecture of the app to try.
 
 ---
 
-<div style="display: flex;">
-  <img src="assets/ci/github-actions.svg" style="border: none; background: transparent; height: 14rem; color: white;" />
-  <img src="assets/ci/Circle-CI-Logo.png" style="border: none; background: transparent; height: 14rem; filter: brightness(400%);" />
-  <img src="assets/ci/1200px-Jenkins_logo.svg.png" style="border: none; background: transparent; height: 14rem;" />
-  <img src="assets/ci/gitlab-ci-cd-logo_2x.png" style="border: none; background: transparent; height: 14rem;" />
+<div style="display: flex
+">
+  <img src="assets/ci/github-actions.svg" style="border: none
+ background: transparent
+ height: 14rem
+ color: white
+" />
+  <img src="assets/ci/Circle-CI-Logo.png" style="border: none
+ background: transparent
+ height: 14rem
+ filter: brightness(400%)
+" />
+  <img src="assets/ci/1200px-Jenkins_logo.svg.png" style="border: none
+ background: transparent
+ height: 14rem
+" />
+  <img src="assets/ci/gitlab-ci-cd-logo_2x.png" style="border: none
+ background: transparent
+ height: 14rem
+" />
 </div>
 
 Note: And you need a CI solution of your choice. We'll focus on Github Actions today, but some examples refer to original Jenkins. Any CI will do honestly, with some requirements. Choose GHA because it's easy to implement, has everything in one platform and honestly is just awesome as an example.
@@ -160,13 +195,15 @@ Note: We can use anything as long as we have the above. We'll focus on GitHub Ac
 
 ---
 
-<img src="assets/angular-overview.png" style="height: 90%;" />
+<img src="assets/angular-overview.png" style="height: 90%
+" />
 
 ---
 
 <img src="assets/ci/gha/get-started.png" />
 
-Note: I like Github Actions, same code repo; no external integrations. This is why primary example, same goes for GitLab. We start by creating a new action.
+Note: I like Github Actions, same code repo
+ no external integrations. This is why primary example, same goes for GitLab. We start by creating a new action.
 
 ----
 
@@ -382,7 +419,9 @@ Note: What when an update fails?
 
 Example from blogpost<!-- .element: class="fragment" -->
 
-<img src="assets/ci/1200px-Jenkins_logo.svg.png" style="height: 20rem; border: none;" class="fragment" />
+<img src="assets/ci/1200px-Jenkins_logo.svg.png" style="height: 20rem
+ border: none
+" class="fragment" />
 
 Disclaimer!<!-- .element: class="fragment" -->
 
@@ -455,7 +494,8 @@ if (updatesApplied) {
 
 😰<!-- .element: class="fragment" -->
 
-Note: This is the complexity we had to deal with in Jenkins to get our conditional reporting. Again, disclaimer; a while ago with limited knowledge. The whole pushing and creating a request is so much harder without the plugin we used.
+Note: This is the complexity we had to deal with in Jenkins to get our conditional reporting. Again, disclaimer
+ a while ago with limited knowledge. The whole pushing and creating a request is so much harder without the plugin we used.
 
 ----
 
@@ -546,13 +586,25 @@ Thanks to Ilshildur.<!-- .element: class="fragment" -->
 
 Don't like Slack? <!-- .element: class="fragment" -->
 
-<div style="width: 100%; float: left;">
-<img src="assets/ci/slack/dont-like/mattermost.png" class="fragment" style="width: 25rem; float: left;" />
-<img src="assets/ci/slack/dont-like/rocketchat.png" class="fragment" style="width: 25rem; float: right;"   /><br />
+<div style="width: 100%
+ float: left
+">
+<img src="assets/ci/slack/dont-like/mattermost.png" class="fragment" style="width: 25rem
+ float: left
+" />
+<img src="assets/ci/slack/dont-like/rocketchat.png" class="fragment" style="width: 25rem
+ float: right
+"   /><br />
 </div>
-<div style="width: 100%; float: left;">
-<img src="assets/ci/slack/dont-like/webhook.png" class="fragment" style="width: 25rem; float: left;" />
-<img src="assets/ci/slack/dont-like/email.png" class="fragment" style="width: 25rem; float: right;"  />
+<div style="width: 100%
+ float: left
+">
+<img src="assets/ci/slack/dont-like/webhook.png" class="fragment" style="width: 25rem
+ float: left
+" />
+<img src="assets/ci/slack/dont-like/email.png" class="fragment" style="width: 25rem
+ float: right
+"  />
 </div>
 
 Note: Nice! But what if you don't like Slack? Well a quick search gave us actions for almost every other imaginable alternative that uses a Webhook. Even send an email!
@@ -585,14 +637,25 @@ Note: Now, we don't have to think about it, when we receive active reminders. We
 ## Thank you!<!-- .element: class="fragment fade-in"-->
 
 <div class="fragment fade-up">
-  <div style="float: left; width: 40%">
-    <img src="assets/bjorn.jpg" width="100" style="border-radius:100%; display: inline-flex;"><br />
-    <img src="assets/ordina-logo.svg" height="40" style="border: 0; background-color: transparent;"/>
-    <img src="assets/codestar.svg" height="30" style="border: 0; background-color: transparent;">
+  <div style="float: left
+ width: 40%">
+    <img src="assets/bjorn.jpg" width="100" style="border-radius:100%
+ display: inline-flex
+"><br />
+    <img src="assets/ordina-logo.svg" height="40" style="border: 0
+ background-color: transparent
+"/>
+    <img src="assets/codestar.svg" height="30" style="border: 0
+ background-color: transparent
+">
   </div>
-  <div style="float: left; width: 60%; text-align: left;">
+  <div style="float: left
+ width: 60%
+ text-align: left
+">
   <br />
-    <h1 style="font-size: 0.9em;">@Bjeaurn</h1>
+    <h1 style="font-size: 0.9em
+">@Bjeaurn</h1>
     <p>Please tweet me your thoughts!</p>
   </div> 
 </div>
