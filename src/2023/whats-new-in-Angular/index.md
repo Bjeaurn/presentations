@@ -49,8 +49,10 @@ Note: Introduce myself, and briefly describe that we're going to go over a tool 
 
 ---
 
-## Signals (beta)
+## Signals (beta)<!-- .element: class="fragment" -->
 #### And the future of Reactivity in Angular<!-- .element: class="fragment" -->
+
+Note: Let's kick it off with one of the things I'm most excited about personally.
 
 ----
 
@@ -153,7 +155,9 @@ Note: In beta in v16, hopefully becoming stable soon.
 
 ---
 
-## Standalone all the things
+## Standalone all the things<!-- .element: class="fragment" -->
+
+Note: Angular has been moving towards making things more Standalone, breaking away from the Module based opinion. See next slide for example.
 
 ----
 
@@ -172,6 +176,8 @@ export class DataModule {}
 export class DataComponent {}
 ```
 
+Note: Familiar if you've been working with Angular for a while. Modules give us a neat way to group and scope. But we've had SCAMs too for a while. Lots of smaller modules.. Now, we have standalone. Doing away with that pattern.
+
 ----
 
 Introduced in v14
@@ -187,6 +193,8 @@ Introduced in v14
 export class DataComponent {}
 ```
 
+Note: No more SCAMs, you can just have imports and providers on your standalone component and use it as such. No more modules required.
+
 ----
 
 ### Since v15.2: Migration!
@@ -197,6 +205,8 @@ ng generate @angular/core:standalone
 <!-- .element: class="fragment" -->
 
 https://angular.io/guide/standalone-migration<!-- .element: class="fragment" -->
+
+Note: To migrate your application/library to standalone. Converts components, directives, pipes to SA. Does away with NgModules, updates the bootstrap.
 
 ----
 
@@ -217,9 +227,12 @@ Clean new application! No modules.<!-- .element: class="fragment" -->
 
 https://angular.io/guide/standalone-components<!-- .element: class="fragment" -->
 
+Note: Easier DX, easier to learn. But doing away with a opinion and practice they've used for years. For apps that have been in development for a bit, might take a while to adapt.
+
 ---
 
-## Non-destructive app hydration
+## Non-destructive app hydration<!-- .element: class="fragment" -->
+
 
 Note: What does that mean? Let's dive into what it improves upon first.
 
@@ -238,8 +251,7 @@ ng add @nguniversal/express-engine
 
 Since v16 also supports standalone apps.<!-- .element: class="fragment" -->
 
-
-Note: Angular Universal from Universal Javascript; Javascript applications that runs in more environments than the browser.
+Note: Angular Universal from Universal Javascript; Javascript applications that runs in more environments than the browser. By adding the Express-engine to your Angular app, it can now boot in NodeJS on your servers and render an application.
 
 ----
 
@@ -251,7 +263,7 @@ Full app, non-destructive app hydration
 - Easy integration with existing apps<!-- .element: class="fragment" -->
 - Up to 45% improvement of LCP<!-- .element: class="fragment" -->
 
-Note: Future-proof architecture refers to the partial hydration and fine-grained loading of code.  LCP, largest contentful paint, 
+Note: - Previous SSR, content flicker on hydrate. - Future-proof architecture: partial hydration and fine-grained loading of code. - LCP, largest contentful paint, 
 
 ----
 
@@ -272,16 +284,18 @@ Note: Granted that you're already using an Angular Universal setup, using the ng
 
 ---
 
-## Beter developer tooling & DX
+## Beter developer tooling & DX<!-- .element: class="fragment" -->
 
 ----
 
 ## Vite + ESBuild<!-- .element: class="fragment" -->
 
-- Developer Preview in v16<!-- .element: class="fragment" -->
+- Vite for dev, esbuild for production builds<!-- .element: class="fragment" -->
 - 72% improvement cold production builds<!-- .element: class="fragment" -->
-- Vite for dev, esbuild for prod<!-- .element: class="fragment" -->
+- Developer Preview in v16<!-- .element: class="fragment" -->
 - Tackle i18n support before stable<!-- .element: class="fragment" -->
+
+Note: Vite and ESBuild replaces Webpack, where Vite is now only used for dev-server.
 
 ----
 
@@ -295,6 +309,8 @@ Note: Granted that you're already using an Angular Universal setup, using the ng
     "builder": "@angular-devkit/build-angular:browser-esbuild",
 ...
 ```
+
+https://angular.io/guide/esbuild<!-- .element: class="fragment" -->
 
 ----
 
@@ -318,7 +334,7 @@ npm install jest --save-dev
 ```
 <!-- .element: class="fragment" -->
 
-Note: Karma was made for AngularJS and has been deprecated.
+Note: ng new app: Karma was made for AngularJS and has been deprecated. Moving towards (community supported) Jest and later WTR.
 
 ----
 
@@ -345,7 +361,7 @@ export class AppComponent
 
 ---
 
-## And more!
+## And more!<!-- .element: class="fragment" -->
 
 ### Since v16<!-- .element: class="fragment" -->
 
@@ -360,6 +376,7 @@ export class App {
 }
 ```
 
+Note: Compiler time runtime inputs.
 
 ----
 
@@ -381,7 +398,7 @@ export class About {
 }
 ```
 
-Note: Route data (resolvers, data properties), path & query parameters, can now be passed as inputs.
+Note: Route data (resolvers, data properties), path & query parameters, can now be passed as inputs. Resolve, contact -> @Input() contact
 
 ----
 
@@ -391,7 +408,7 @@ Note: Route data (resolvers, data properties), path & query parameters, can now 
 <super-duper-long-component-name [prop]="someVar"/>
 ```
 
-Note: Where you normally had to <tag></tag>, you can now make it self closing, woo!
+Note: Where you normally had to < tag ></ tag >, you can now make it self closing, woo!
 
 ---
 
@@ -493,3 +510,5 @@ Note: Final thoughts, excited for the future of Angular. Following good ideas fr
   <img src="assets/ordina.svg" height="30">
   </div>
 </div>
+
+Note: Questions?
