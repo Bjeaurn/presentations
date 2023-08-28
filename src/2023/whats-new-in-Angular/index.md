@@ -79,7 +79,7 @@ Note: Change Detection takes care of this. Now let's make this reactive. Can't u
 // RxJS Reactive example
 @Component({
     template: `
-        <div>{{ count$$$ | async }}</div>
+        <div>{{ count$$ | async }}</div>
         <button (click)="count$$.next(count$$.value + 1)">+</button>
     `
 })
@@ -253,12 +253,12 @@ ng add @nguniversal/express-engine
 
 Since v16 also supports standalone apps.<!-- .element: class="fragment" -->
 
-Note: Angular Universal from Universal Javascript; Javascript applications that runs in more environments than the browser. By adding the Express-engine to your Angular app, it can now boot in NodeJS on your servers and render an application.
+Note: Angular Universal from Universal Javascript; Javascript applications that runs in more environments than the browser. By adding the Express-engine to your Angular app, it can now boot in NodeJS on your servers and render an application. (And psst, looks like they're renaming it to @angular/ssr)
 
 ----
 
 ## Since v16
-Full app, non-destructive app hydration
+Full app, non-destructive hydration
 
 - No content flickering<!-- .element: class="fragment" -->
 - Future-proof architecture<!-- .element: class="fragment" -->
@@ -286,7 +286,7 @@ Note: Granted that you're already using an Angular Universal setup, using the ng
 
 ---
 
-## Beter developer tooling & DX<!-- .element: class="fragment" -->
+## Better developer tooling & DX<!-- .element: class="fragment" -->
 
 ----
 
