@@ -14,10 +14,12 @@ Note: Angular is changing, new things are being introduced all the time. Let's t
 - Every 6 months<!-- .element: class="fragment" -->
 - November 2023: v17<!-- .element: class="fragment" -->
 - Current LTS: 14 and 15<!-- .element: class="fragment" -->
+- Active: 16<!-- .element: class="fragment" -->
 
 https://angular.io/guide/releases#support-window<!-- .element: class="fragment" -->
 
-Note: v14 (18-11-'22), v15 (18-05-'23). So if you're not on one of those, you should...
+Note:  v14 (lts ends 18-11-'23, released 06-'22), 
+v15 (lts ends 18-05-'24, release 11-'22), v16 (03-05'23, LTS at 03-11-'23). So if you're not on one of those, you should...
 
 ----
 
@@ -292,10 +294,13 @@ Note: Granted that you're already using an Angular Universal setup, using the ng
 
 - Vite for dev, esbuild for production builds<!-- .element: class="fragment" -->
 - 72% improvement cold production builds<!-- .element: class="fragment" -->
+- No HMR at the moment in Vite<!-- .element: class="fragment" -->
 - Developer Preview in v16<!-- .element: class="fragment" -->
 - Tackle i18n support before stable<!-- .element: class="fragment" -->
 
-Note: Vite and ESBuild replaces Webpack, where Vite is now only used for dev-server.
+Note: Vite and ESBuild replaces Webpack, where Vite is now only used for dev-server. HMR is planned for the future.
+
+https://youtu.be/kwUfeWe7DCw <-- Check this one again.
 
 ----
 
@@ -440,7 +445,11 @@ Note: Partial resumability? Much like Qwik does (Qwik.io), where the app is preg
 
 <small>https://angular.io/guide/roadmap</small><!-- .element: class="fragment" -->
 
-Note: Maybe a way to determine within a component what needs to be loaded upon construction, and what can be "resumed" or lazily loaded? Maybe it's strictly a compiler thing? Thoughts?
+Note: Tying in with the Partial & Resume part. 
+
+Being able to tell the compiler what parts to ship instantly and which not, as a native function within Angular, would make it easier for SSR and even regular apps to ship less initial JS. How they are planning on doing this, that's not clear yet!
+
+Fireship made a nice vid on it: https://youtu.be/kwUfeWe7DCw
 
 ----
 
@@ -487,7 +496,11 @@ Note: The Angular team has acknowledged the idea and technological feasibility o
 
 <small>https://github.com/angular/angular/discussions/51241</small><!-- .element: class="fragment" -->
 
-Note: As per the discussion, they changed their minds from the initial RFComments. Proposed is above, @ symbols. Is this in favor of the *ngIf and *ngFor? The deferred loading is a very cool idea. Less `ng-container` and `ng-template` things!
+Note: As per the discussion, they changed their minds from the initial RFComments. Proposed is above, @ symbols. 
+
+Is this in favor of the *ngIf and *ngFor? The deferred loading is a very cool idea. Less `ng-container` and `ng-template` things!
+
+It also ties back in with Resume & Partial & Component-level splitting perhaps, to even make it possible for lazily loaded templates and pieces of codes, as they tie in with these new APIs? Interesting stuff.
 
 ---
 
