@@ -356,9 +356,7 @@ export class AppComponent
     http.get('…').pipe(takeUntilDestroyed());
     destroyRef = inject(DestroyRef);
 
-    destroy() {
-        this.destroyRef.onDestroy(() => /* cleanup */ );
-    }
+    this.destroyRef.onDestroy(() => { /* cleanup */ } );
 }
 
 ```
